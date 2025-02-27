@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+</head>
+<body>
+    {% if addresses %}
+    <h1> Endereços</h1>
+    <table>
+        <tr>
+            <th>CEP</th>
+            <th>Cidade</th>
+            <th>UF</th>
+        </tr>
+        {% for address in addresses %}
+        <tr>
+            <td>{{ address.cep }}</td>
+            <td>{{ address.localidade }}</td>
+            <td>{{ address.uf }}</td>
+            <td>
+            <button><a href="{% url 'endereco:atualizar' address.id %}">Editar</a></button>
+            <button><a href="{% url 'endereco:detalhar' address.id %}">Detalhes</a></button>
+        </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <h1>Nenhum endereço cadastrado</h1>
+</body>
+</html>
